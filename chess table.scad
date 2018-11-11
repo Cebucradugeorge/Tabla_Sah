@@ -24,6 +24,70 @@ translate([x*5+2,y*5+2,38-epsilon])  cube([5-epsilon,5-epsilon,3*epsilon]);
 			color("White")		      
 translate([x*5+2,y*5+2,38-epsilon]) cube([5-2*epsilon,5-2*epsilon,3*epsilon]);
        }
+for(x=[1:8])
+    for(y=[2:2])
+        if((x + y) % 2 == 0) {
+			color("White")		          
+translate([x*5-0.5,y*5-0.5,38-epsilon]) scale([0.2,0.2,0.2]) pawn();
+       }
+        else {
+			color("White")		      
+translate([x*5-0.5,y*5-0.5,38-epsilon]) scale([0.2,0.2,0.2]) pawn();
+       }  
+for(x=[1:8])
+    for(y=[7:7])
+        if((x + y) % 2 == 0) {
+			color("Gold")		          
+translate([x*5-0.5,y*5-0.5,38-epsilon]) scale([0.2,0.2,0.2]) pawn();
+       }
+        else {
+			color("Gold")		      
+translate([x*5-0.5,y*5-0.5,38-epsilon]) scale([0.2,0.2,0.2]) pawn();
+       }  
+
 }
+}
+module pawn(){
+cylinder(1,10,10);
+translate([0,0,1])
+cylinder(1, 9.7,9,7);
+translate([0,0,2])
+cylinder(1,9.4,9.4);
+translate([0,0,3])
+// making the sphere and removing the extra part of the sphere
+difference(){
+sphere(9);
+    translate([0,0,-9])
+    // remove the section of the base sphere below the x axis
+        cylinder(6,9,9);
+        }
+        // center shaft
+translate([0,0,3])
+cylinder(15,4.5,4.5);
+// cone widening-shaped cylinder
+translate([0,0,18])
+cylinder(5,5,9.4);
+// cone narrowing-shaped cylinder
+translate([0,0,23])
+cylinder(5,9.4,5);
+// top
+translate([0,0,28])
+sphere(4.5);
+
+
 }
 chess_table();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
