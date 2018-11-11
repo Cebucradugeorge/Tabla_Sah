@@ -27,11 +27,11 @@ translate([x*5+2,y*5+2,38-epsilon]) cube([5-2*epsilon,5-2*epsilon,3*epsilon]);
 for(x=[1:8])
     for(y=[2:2])
         if((x + y) % 2 == 0) {
-			color("White")		          
+			color("Pink")		          
 translate([x*5-0.5,y*5-0.5,38-epsilon]) scale([0.2,0.2,0.2]) pawn();
        }
         else {
-			color("White")		      
+			color("Pink")		      
 translate([x*5-0.5,y*5-0.5,38-epsilon]) scale([0.2,0.2,0.2]) pawn();
        }  
 for(x=[1:8])
@@ -76,8 +76,48 @@ sphere(4.5);
 
 
 }
-chess_table();
 
+
+$fn=150;
+
+
+
+
+module mug(){
+	cup(height=160,diameter=120);
+	translate([120/2-5,10,80])
+		rotate([90,0,0])
+			handle();
+}
+
+
+
+
+module handle(){
+	translate([10,0,0]){
+		difference(){
+			scale([1,1.5,1])
+				cylinder(20,50,50);
+			translate([-5,0,-5])
+				scale([1,1.5,1])
+					cylinder(30,45,45);
+			translate([-70,-80,-5])
+				cube([60,160,30]);
+		}
+	}
+}
+
+module cup(height,diameter){
+	difference(){
+		cylinder(height,diameter/2,diameter/2);
+		translate([0,0,5])
+			cylinder(height,diameter/2-5,diameter/2-5);
+	}
+}
+
+chess_table();
+translate([2,2,38.9])
+scale([0.05,0.05,0.05]) rotate([0,0,270]) mug();
 
 
 
